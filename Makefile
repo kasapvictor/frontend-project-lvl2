@@ -13,7 +13,7 @@ publish: # публикация пакета
 	npm publish --dry-run
 
 link: # может потребоваться дополнительная команда sudo npm link --force
-	npm link --force
+	npm link
 
 gendiff:
 	bin/gendiff.js
