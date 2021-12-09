@@ -4,11 +4,13 @@
 ### Notes
 
 ```bash
+# permission to execute file
 chmod +x bin/gendiff.js 
  ```
 
-```bash
-gendiff -f ./__textures__/file1.json ./__textures__/file2.js
+```bash 
+# simple flat compare two json files
+gendiff ./__fixtures__/file1.json ./__fixtures__/file2.json
 ```
 
 ### Install

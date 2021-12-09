@@ -8,7 +8,7 @@
   },
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "npx jest"
   },
   "repository": {
     "type": "git",
@@ -23,5 +23,11 @@
   "notes": "https://github.com/search?q=frontend-project-lvl2",
   "dependencies": {
     "commander": "^8.3.0"
+  },
+  "devDependencies": {
+    "jest": "^27.4.3"
+  },
+  "jest": {
+    "testEnvironment": "node"
   }
 }
