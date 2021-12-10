@@ -1,17 +1,17 @@
 import * as fs from 'fs';
 import * as path from 'path';
-import {dirname} from 'path';
-import {fileURLToPath} from 'url';
+import { dirname } from 'path';
+import { fileURLToPath } from 'url';
 import gendiff from '../src/index.js';
 
 // /Users/victorkasap/Projects/frontend-project-lvl2/__tests__/gendiff.test.js
-const __filename = fileURLToPath(import.meta.url);
+const fileName = fileURLToPath(import.meta.url);
 
 //  /Users/victorkasap/Projects/frontend-project-lvl2/__tests__
-const __dirname = dirname(__filename);
+const dirName = dirname(fileName);
 
 // /Users/victorkasap/Projects/frontend-project-lvl2/__fixtures__/file1.json
-const getFixturePath = (filename) => path.join(__dirname, '..', '__fixtures__', filename);
+const getFixturePath = (filename) => path.join(dirName, '..', '__fixtures__', filename);
 
 /*
 - follow: false
@@ -22,23 +22,23 @@ const getFixturePath = (filename) => path.join(__dirname, '..', '__fixtures__', 
 + verbose: true
  */
 const getContent = (file) => {
-	const ext = path.extname(file);
-	
-	switch (true) {
-		case ext === '.json':
-			return JSON.parse(fs.readFileSync((file), 'utf-8'));
-		
-		case ext === '.txt':
-			return fs.readFileSync((file), 'utf-8').trim();
-	}
+  const ext = path.extname(file);
+
+  switch (true) {
+    case ext === '.json':
+      return JSON.parse(fs.readFileSync((file), 'utf-8'));
+
+    default: // for .txt
+      return fs.readFileSync((file), 'utf-8').trim();
+  }
 };
 
-test('Test flat JSON files', () => {
-	const json1 = getFixturePath('file1.json');
-	const json2 = getFixturePath('file2.json');
-	const diff = gendiff(json1, json2);
-	const expectedOfJson = getFixturePath('expected_json.txt');
-	const expectContent = getContent(expectedOfJson);
-	
-	expect(gendiff(json1, json2)).toEqual(expectContent);
+test('flat JSON files', () => {
+  const json1 = getFixturePath('file1.json');
+  const json2 = getFixturePath('file2.json');
+  const diff = gendiff(json1, json2);
+  const expectedOfJson = getFixturePath('expected_json.txt');
+  const expectContent = getContent(expectedOfJson);
+
+  expect(diff).toEqual(expectContent);
 });
