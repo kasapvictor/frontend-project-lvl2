@@ -28,4 +28,6 @@ test: # тест скрипта
 	npm test
 
 test-coverage: # покрытие тестами
-	npm test -- --coverage
+	npm test -- --coverage --coverageProvider=v8
+
+.PHONY: test

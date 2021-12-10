@@ -8,7 +8,8 @@
   },
   "type": "module",
   "scripts": {
-    "test": "npx jest"
+    "test": "npx jest",
+    "test-coverage": "npx jest --coverage"
   },
   "repository": {
     "type": "git",
