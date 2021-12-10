@@ -23,3 +23,9 @@ lint: # проверка стиля кода
 
 lint-fix: # проверка стиля кода + исправление
 	npx eslint . --fix
+
+test: # тест скрипта
+	npm test
+
+test-coverage: # покрытие тестами
+	npm test -- --coverage
