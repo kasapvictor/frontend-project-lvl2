@@ -29,7 +29,7 @@ jobs:
       - name: Run make test & code coverage
         uses: paambaati/codeclimate-action@v2.7.4
         env:
-          CC_TEST_REPORTER_ID: ${{ secrets.9c862f3d0f7715ac200e6df20ccd4a33353e13edbd6a38a51899a4495f8e112c }}
+          CC_TEST_REPORTER_ID: ${{ 9c862f3d0f7715ac200e6df20ccd4a33353e13edbd6a38a51899a4495f8e112c }}
         with:
           coverageCommand: make test-coverage
           debug: true
