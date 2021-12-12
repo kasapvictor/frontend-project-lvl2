@@ -10,10 +10,10 @@ const fileName = fileURLToPath(import.meta.url);
 const dirName = dirname(fileName);
 
 // /Users/victorkasap/Projects/frontend-project-lvl2/__fixtures__/file1.json
-const getFixturePath = (filename) => path.normalize(path.join(dirName, '..', '__fixtures__', filename));
+const getFixturePath = (filename) => path.join(dirName, '..', '__fixtures__', filename);
 
 test('Parse JSON', () => {
-  const fileJson = getFixturePath('file1.JSON');
+  const fileJson = getFixturePath('file1.json');
   const expectedData = {
     host: 'hexlet.io',
     timeout: 50,
