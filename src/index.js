@@ -1,8 +1,8 @@
-import getContent from './parsers.js';
+import parsers from './parsers.js';
 
 export default (path1, path2) => {
-  const file1 = getContent(path1);
-  const file2 = getContent(path2);
+  const file1 = parsers(path1);
+  const file2 = parsers(path2);
 
   const PREFIX = '  ';
   const PREFIX_NO = '- ';

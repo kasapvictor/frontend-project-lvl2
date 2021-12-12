@@ -2,7 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import yaml from 'js-yaml';
 
-const getContent = (file) => {
+export default (file) => {
   const ext = path.extname(file);
   const { base } = path.parse(file);
   const content = fs.readFileSync(file, 'utf-8');
@@ -18,5 +18,3 @@ const getContent = (file) => {
       return new Error(`Parsing a ${base} with '${ext}' extention is not possibly`);
   }
 };
-
-export default getContent;
