@@ -35,3 +35,11 @@ test('Parse YAML', () => {
 
   expect(parsers(fileYaml)).toEqual(expectedData);
 });
+
+test('Parse TEXT -> Error', () => {
+  const fileText = getFixturePath('parser_text_test.txt');
+  const ext = path.extname(fileText);
+  const { base } = path.parse(fileText);
+
+  expect(parsers(fileText)).toEqual(new Error(`Parsing a ${base} with '${ext}' extention is not possibly`));
+});

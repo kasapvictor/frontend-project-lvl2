@@ -2,7 +2,11 @@ import fs from 'fs';
 import path from 'path';
 import yaml from 'js-yaml';
 
-const parse = (ext, content) => {
+const getContent = (file) => {
+  const ext = path.extname(file);
+  const { base } = path.parse(file);
+  const content = fs.readFileSync(file, 'utf-8');
+
   switch (true) {
     case ext === '.json':
       return JSON.parse(content);
@@ -11,15 +15,8 @@ const parse = (ext, content) => {
       return yaml.load(content);
 
     default:
-      return JSON.parse(content);
+      return new Error(`Parsing a ${base} with '${ext}' extention is not possibly`);
   }
-};
-
-const getContent = (file) => {
-  const ext = path.extname(file);
-  const content = fs.readFileSync(file, 'utf-8');
-
-  return parse(ext, content);
 };
 
 export default getContent;
