@@ -24,3 +24,5 @@ make install
 ### Compare 2 JSON files:
 [![asciicast](https://asciinema.org/a/S3VztScAm5iOmEiFrqLYMxaA2.svg)](https://asciinema.org/a/S3VztScAm5iOmEiFrqLYMxaA2)
 
+### Compare 2 YML files:
+[![asciicast](https://asciinema.org/a/GSp8RzAivYKPcL7SqUblGFdDh.svg)](https://asciinema.org/a/GSp8RzAivYKPcL7SqUblGFdDh)

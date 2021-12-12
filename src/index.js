@@ -1,6 +1,4 @@
-import * as fs from 'fs';
-
-const getContent = (path) => JSON.parse(fs.readFileSync((path), 'utf-8'));
+import getContent from './parsers.js';
 
 export default (path1, path2) => {
   const file1 = getContent(path1);
@@ -42,5 +40,7 @@ export default (path1, path2) => {
     return prev;
   }, []);
 
-  return result.join('\n');
+  const out = `{\n${result.join('\n')}\n}`;
+
+  return out;
 };

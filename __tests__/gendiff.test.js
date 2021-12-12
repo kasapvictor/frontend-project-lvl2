@@ -13,32 +13,25 @@ const dirName = dirname(fileName);
 // /Users/victorkasap/Projects/frontend-project-lvl2/__fixtures__/file1.json
 const getFixturePath = (filename) => path.join(dirName, '..', '__fixtures__', filename);
 
-/*
-- follow: false
-  host: hexlet.io
-- proxy: 123.234.53.22
-- timeout: 50
-+ timeout: 20
-+ verbose: true
- */
-const getContent = (file) => {
-  const ext = path.extname(file);
+// content of file
+const getContent = (file) => fs.readFileSync((file), 'utf-8').trim();
 
-  switch (true) {
-    case ext === '.json':
-      return JSON.parse(fs.readFileSync((file), 'utf-8'));
+test('Flat JSON files', () => {
+  const file1 = getFixturePath('file1.json');
+  const file2 = getFixturePath('file2.json');
+  const diff = gendiff(file1, file2);
+  const expectedFile = getFixturePath('expected_json.txt');
+  const expectContent = getContent(expectedFile);
 
-    default: // for .txt
-      return fs.readFileSync((file), 'utf-8').trim();
-  }
-};
+  expect(diff).toEqual(expectContent);
+});
 
-test('flat JSON files', () => {
-  const json1 = getFixturePath('file1.json');
-  const json2 = getFixturePath('file2.json');
-  const diff = gendiff(json1, json2);
-  const expectedOfJson = getFixturePath('expected_json.txt');
-  const expectContent = getContent(expectedOfJson);
+test('Flat YAML files', () => {
+  const file1 = getFixturePath('file1.yaml');
+  const file2 = getFixturePath('file2.yml');
+  const diff = gendiff(file1, file2);
+  const expectedFile = getFixturePath('expected_yaml.txt');
+  const expectContent = getContent(expectedFile);
 
   expect(diff).toEqual(expectContent);
 });
