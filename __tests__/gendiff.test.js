@@ -23,8 +23,6 @@ test('2 JSON files', () => {
   const expectedFile = getFixturePath('expected.txt');
   const expectContent = getContent(expectedFile);
 
-  // console.log('diff', diff);
-  // console.log('expectContent', expectContent);
   expect(diff).toEqual(expectContent);
 });
 
