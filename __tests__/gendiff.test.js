@@ -16,21 +16,23 @@ const getFixturePath = (filename) => path.join(dirName, '..', '__fixtures__', fi
 // content of file
 const getContent = (file) => fs.readFileSync((file), 'utf-8').trim();
 
-test('Flat JSON files', () => {
+test('2 JSON files', () => {
   const file1 = getFixturePath('file1.json');
   const file2 = getFixturePath('file2.json');
   const diff = gendiff(file1, file2);
-  const expectedFile = getFixturePath('expected_json.txt');
+  const expectedFile = getFixturePath('expected.txt');
   const expectContent = getContent(expectedFile);
 
+  // console.log('diff', diff);
+  // console.log('expectContent', expectContent);
   expect(diff).toEqual(expectContent);
 });
 
-test('Flat YAML files', () => {
+test('2 YAML files', () => {
   const file1 = getFixturePath('file1.yaml');
   const file2 = getFixturePath('file2.yml');
   const diff = gendiff(file1, file2);
-  const expectedFile = getFixturePath('expected_yaml.txt');
+  const expectedFile = getFixturePath('expected.txt');
   const expectContent = getContent(expectedFile);
 
   expect(diff).toEqual(expectContent);

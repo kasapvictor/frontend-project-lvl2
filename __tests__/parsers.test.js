@@ -1,7 +1,7 @@
 import * as path from 'path';
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
-import parsers from '../src/parsers.js';
+import parsers from '../src/utils/parsers.js';
 
 // /Users/victorkasap/Projects/frontend-project-lvl2/__tests__/gendiff.test.js
 const fileName = fileURLToPath(import.meta.url);
@@ -15,10 +15,30 @@ const getFixturePath = (filename) => path.join(dirName, '..', '__fixtures__', fi
 test('Parse JSON', () => {
   const fileJson = getFixturePath('file1.json');
   const expectedData = {
-    host: 'hexlet.io',
-    timeout: 50,
-    proxy: '123.234.53.22',
-    follow: false,
+    common: {
+      setting1: 'Value 1',
+      setting2: 200,
+      setting3: true,
+      setting6: {
+        key: 'value',
+        doge: {
+          wow: '',
+        },
+      },
+    },
+    group1: {
+      baz: 'bas',
+      foo: 'bar',
+      nest: {
+        key: 'value',
+      },
+    },
+    group2: {
+      abc: 12345,
+      deep: {
+        id: 45,
+      },
+    },
   };
 
   expect(parsers(fileJson)).toEqual(expectedData);
@@ -27,10 +47,14 @@ test('Parse JSON', () => {
 test('Parse YAML', () => {
   const fileYaml = getFixturePath('file1.yaml');
   const expectedData = {
-    host: 'hexlet.io',
-    timeout: 50,
-    proxy: '123.234.53.22',
-    follow: false,
+    common: {
+      setting1: 'Value 1',
+      setting2: 200,
+      setting3: true,
+      setting6: { key: 'value', doge: { wow: '' } },
+    },
+    group1: { baz: 'bas', foo: 'bar', nest: { key: 'value' } },
+    group2: { abc: 12345, deep: { id: 45 } },
   };
 
   expect(parsers(fileYaml)).toEqual(expectedData);
