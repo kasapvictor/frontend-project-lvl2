@@ -1,7 +1,7 @@
 import * as path from 'path';
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
-import parsers from '../src/utils/parsers.js';
+import parse from '../src/utils/parse.js';
 
 // /Users/victorkasap/Projects/frontend-project-lvl2/__tests__/gendiff.test.js
 const fileName = fileURLToPath(import.meta.url);
@@ -41,7 +41,7 @@ test('Parse JSON', () => {
     },
   };
 
-  expect(parsers(fileJson)).toEqual(expectedData);
+  expect(parse(fileJson)).toEqual(expectedData);
 });
 
 test('Parse YAML', () => {
@@ -57,7 +57,7 @@ test('Parse YAML', () => {
     group2: { abc: 12345, deep: { id: 45 } },
   };
 
-  expect(parsers(fileYaml)).toEqual(expectedData);
+  expect(parse(fileYaml)).toEqual(expectedData);
 });
 
 test('Parse TEXT -> Error', () => {
@@ -65,5 +65,5 @@ test('Parse TEXT -> Error', () => {
   const ext = path.extname(fileText);
   const { base } = path.parse(fileText);
 
-  expect(parsers(fileText)).toEqual(new Error(`Parsing a ${base} with '${ext}' extention is not possibly`));
+  expect(parse(fileText)).toEqual(new Error(`Parsing a ${base} with '${ext}' extention is not possibly`));
 });
