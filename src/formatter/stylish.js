@@ -27,41 +27,36 @@ const stringify = (obj, status, level) => {
   return `{\n${iter(obj)}\n${indent(status, level + 1 / 2)}}`;
 };
 
-const formatted = (obj, depth = 0) => {
-  const iter = (data) => {
-    const result = _.keys(data).reduce((prev, curr) => {
-      const {
-        name, status, value, value1, value2, children, level,
-      } = data[curr];
-      const space = indent(status, level);
+const stylish = (obj, depth = 0) => {
+  const result = _.keys(obj).reduce((prev, curr) => {
+    const {
+      name, status, value, value1, value2, children, level,
+    } = obj[curr];
+    const space = indent(status, level);
+    const line = (val, symbol = '') => `${space}${symbol}${name}: ${stringify(val, status, level)}`;
 
-      const line = (val, symbol = '') => `${space}${symbol}${name}: ${stringify(val, status, level)}`;
+    switch (true) {
+      case status === 'added':
+        return [...prev, line(value, '+ ')];
 
-      switch (true) {
-        case status === 'added':
-          return [...prev, line(value, '+ ')];
+      case status === 'deleted':
+        return [...prev, line(value, '- ')];
 
-        case status === 'deleted':
-          return [...prev, line(value, '- ')];
+      case status === 'parent':
+        return [...prev, `${space}${name}: ${stylish(children, level)}`];
 
-        case status === 'parent':
-          return [...prev, `${space}${name}: ${formatted(children, level)}`];
+      case status === 'changed':
+        return [...prev, `${line(value1, '- ')}\n${line(value2, '+ ')}`];
 
-        case status === 'changed':
-          return [...prev, `${line(value1, '- ')}\n${line(value2, '+ ')}`];
+      case status === 'unchanged':
+        return [...prev, line(value)];
 
-        case status === 'unchanged':
-          return [...prev, line(value)];
+      default:
+        throw new Error(`Error of formatted - ${status}`);
+    }
+  }, []);
 
-        default:
-          throw new Error(`Error of formatted - ${status}`);
-      }
-    }, []);
-
-    return `{\n${result.join('\n')}\n${indent('', depth)}}`;
-  };
-
-  return iter(obj);
+  return `{\n${result.join('\n')}\n${indent('', depth)}}`;
 };
 
-export default formatted;
+export default stylish;

@@ -11,14 +11,19 @@
 chmod +x bin/gendiff.js 
  ```
 
-```bash 
-# simple flat compare two json files
-gendiff ./__fixtures__/file1.json ./__fixtures__/file2.json
-```
-
 ### Install
 ```bash
 make install
+```
+
+```bash 
+# simple flat compare two json files deffault style // stylish
+gendiff ./__fixtures__/file1.json ./__fixtures__/file2.json
+```
+
+```bash 
+# simple flat compare two json files to plain style
+gendiff --format plain ./__fixtures__/file1.json ./__fixtures__/file2.json
 ```
 
 ### Compare 2 JSON files:
