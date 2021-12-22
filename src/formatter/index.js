@@ -6,7 +6,7 @@ export default (format, data) => {
   switch (format) {
     case 'json':
       return json(data);
-      
+
     case 'plain':
       return plain(data);
 
