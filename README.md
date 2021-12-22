@@ -21,13 +21,20 @@ make install
 gendiff ./__fixtures__/file1.json ./__fixtures__/file2.json
 ```
 
+### Compare 2 JSON files default style - "stylish":
+[![asciicast](https://asciinema.org/a/S3VztScAm5iOmEiFrqLYMxaA2.svg)](https://asciinema.org/a/S3VztScAm5iOmEiFrqLYMxaA2)
+
+### Compare 2 YML files default style - "stylish":
+[![asciicast](https://asciinema.org/a/GSp8RzAivYKPcL7SqUblGFdDh.svg)](https://asciinema.org/a/GSp8RzAivYKPcL7SqUblGFdDh)
+
+
 ```bash 
 # simple flat compare two json files to plain style
 gendiff --format plain ./__fixtures__/file1.json ./__fixtures__/file2.json
 ```
 
-### Compare 2 JSON files:
-[![asciicast](https://asciinema.org/a/S3VztScAm5iOmEiFrqLYMxaA2.svg)](https://asciinema.org/a/S3VztScAm5iOmEiFrqLYMxaA2)
+### Compare 2 JSON files default style - "plain":
+[![asciicast](https://asciinema.org/a/1TUvB2ekQUz6itKyK97Jc2jbc.svg)](https://asciinema.org/a/1TUvB2ekQUz6itKyK97Jc2jbc)
 
-### Compare 2 YML files:
-[![asciicast](https://asciinema.org/a/GSp8RzAivYKPcL7SqUblGFdDh.svg)](https://asciinema.org/a/GSp8RzAivYKPcL7SqUblGFdDh)
+### Compare 2 YAML files default style - "plain":
+[![asciicast](https://asciinema.org/a/J3GR4QqXCUXoqJuSCyVqAxEIm.svg)](https://asciinema.org/a/J3GR4QqXCUXoqJuSCyVqAxEIm)
