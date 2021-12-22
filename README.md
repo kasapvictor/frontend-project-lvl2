@@ -38,3 +38,8 @@ gendiff --format plain ./__fixtures__/file1.json ./__fixtures__/file2.json
 
 ### Compare 2 YAML files default style - "plain":
 [![asciicast](https://asciinema.org/a/J3GR4QqXCUXoqJuSCyVqAxEIm.svg)](https://asciinema.org/a/J3GR4QqXCUXoqJuSCyVqAxEIm)
+
+```bash 
+# simple flat compare two json files to plain style
+gendiff --format json ./__fixtures__/file1.json ./__fixtures__/file2.json
+```
