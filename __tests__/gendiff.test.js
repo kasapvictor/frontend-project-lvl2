@@ -42,6 +42,6 @@ test('2 JSON files to PLAIN', () => {
   const diff = gendiff(file1, file2, 'plain');
   const expectedFile = getFixturePath('expectedPlain.txt');
   const expectContent = getContent(expectedFile);
-  
+
   expect(diff).toEqual(expectContent);
 });
