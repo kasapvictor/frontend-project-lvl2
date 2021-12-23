@@ -29,7 +29,7 @@ const tree = (data1, data2 = {}, level = 1) => {
         return [...prev, {
           name: curr,
           status: 'parent',
-          children: tree(el1, el2, level + 1),
+          value: tree(el1, el2, level + 1),
           level,
         }];
 

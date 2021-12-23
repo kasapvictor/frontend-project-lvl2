@@ -15,14 +15,14 @@ const formatValue = (data) => {
 
 const plain = (data, path = []) => _.keys(data).reduce((prev, item) => {
   const {
-    name, status, value, value1, value2, children,
+    name, status, value, value1, value2,
   } = data[item];
   const pathName = [...path, name].join('.');
   const startString = (state) => `Property '${pathName}' was ${state}`;
 
   switch (status) {
     case 'parent':
-      return [...prev, `${plain(children, [...path, name])}`];
+      return [...prev, `${plain(value, [...path, name])}`];
 
     case 'added':
       return [...prev, `${startString(status)} with value: ${formatValue(value)}`];

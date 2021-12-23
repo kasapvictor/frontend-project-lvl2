@@ -30,7 +30,7 @@ const stringify = (obj, status, level) => {
 const stylish = (obj, depth = 0) => {
   const result = _.keys(obj).reduce((prev, curr) => {
     const {
-      name, status, value, value1, value2, children, level,
+      name, status, value, value1, value2, level,
     } = obj[curr];
     const space = indent(status, level);
     const line = (val, symbol = '') => `${space}${symbol}${name}: ${stringify(val, status, level)}`;
@@ -43,7 +43,7 @@ const stylish = (obj, depth = 0) => {
         return [...prev, line(value, '- ')];
 
       case status === 'parent':
-        return [...prev, `${space}${name}: ${stylish(children, level)}`];
+        return [...prev, `${space}${name}: ${stylish(value, level)}`];
 
       case status === 'changed':
         return [...prev, `${line(value1, '- ')}\n${line(value2, '+ ')}`];
