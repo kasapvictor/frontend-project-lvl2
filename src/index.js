@@ -1,4 +1,4 @@
-import parse from './utils/parse.js';
+import parse from './process/parse.js';
 import tree from './process/tree.js';
 import formatData from './formatter/index.js';
 
