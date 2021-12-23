@@ -7,7 +7,7 @@
 > genDiff - this is a training project of Hexlet.
 > 
 > genDiff - takes two required parameters - path to two files (json or yaml)
-> end then it return different rows between files in default style or plain style or json style. 
+> and then it return different rows between files in default style or plain style or json style. 
 > It will dependence of what you need and what you indicate
 > For indicate out style you nedd add `--format json` or `--formst plain` or `--format stylish`
 > By default  `stylish`
