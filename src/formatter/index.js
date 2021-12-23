@@ -1,11 +1,10 @@
-import json from './json.js';
 import plain from './plain.js';
 import stylish from './stylish.js';
 
 export default (format, data) => {
   switch (format) {
     case 'json':
-      return json(data);
+      return JSON.stringify(data);
 
     case 'plain':
       return plain(data);

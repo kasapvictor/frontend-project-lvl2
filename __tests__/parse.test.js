@@ -1,7 +1,7 @@
 import * as path from 'path';
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
-import parse from '../src/utils/parse.js';
+import parse from '../src/process/parse.js';
 
 // /Users/victorkasap/Projects/frontend-project-lvl2/__tests__/gendiff.test.js
 const fileName = fileURLToPath(import.meta.url);
